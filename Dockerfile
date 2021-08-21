@@ -1,6 +1,6 @@
 FROM node:12
 
-#MAINTAINER Rahul Soni
+LABEL Author="rahul989741@gmail.com"
 
 # Create app directory
 WORKDIR /usr/src/app
