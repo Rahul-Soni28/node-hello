@@ -4,7 +4,7 @@ pipeline{
         stage("Build"){
             steps{
                 sh 'npm pack'
-                sh 'set BUILD_ID=dontKillMe nohup npm run start&'
+                sh 'set BUILD_ID=dontKillMe nohup npm run start &'
             }
         }
         stage("Test"){
