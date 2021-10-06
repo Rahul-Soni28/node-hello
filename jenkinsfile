@@ -2,9 +2,12 @@ pipeline{
     agent any
     stages{
         stage("Build"){
-            echo "====++++Building node hello app++++===="
-            npm pack
-            npm run start
+            step{
+                echo "====++++Building node hello app++++===="
+                npm pack
+                npm run start
+            }
+            
         }
     }
 }
