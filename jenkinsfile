@@ -4,7 +4,7 @@ pipeline{
         stage("build"){
             steps{
                 sh 'npm pack'
-                sh 'npm run start'
+                sh 'npm run start &'
             }
         }
         stage("test"){
