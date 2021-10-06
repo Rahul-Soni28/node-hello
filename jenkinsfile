@@ -1,20 +1,15 @@
-pipeline{
+pipepline{
     agent any
     stages{
-        stage("Build"){
-            steps{
-                sh 'npm pack'
-                sh 'nohup npm run start'
-            }
-        }
-        stage("Test"){
-            steps{
-            echo "====++++Testing++++===="
-            }
-        }
         stage("build"){
             steps{
-            echo "====++++building++++===="
+                sh 'npm pack'
+                sh 'npm run start'
+            }
+        }
+        stage("test"){
+            steps{
+                echo "====++++Testing++++===="
             }
         }
     }
