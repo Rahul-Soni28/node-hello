@@ -1,4 +1,5 @@
 //Running the stages in parallely on multiple agents
+// using decalarative syntax
 pipeline{
     agent none
     stages{
