@@ -1,27 +1,31 @@
+//Running the stages in parallely on multiple agents
 pipeline{
-    agent any
+    agent none
     stages{
         stage("build"){
             steps{
-                sh 'npm pack'
-                sh 'npm run start &'
+                echo "Building"
             }
         }
-        stage("test"){
-            steps{
-                echo "====++++Testing++++===="
+        stage("testing parallel"){
+            parallel{
+                stage("test on linux1"){
+                    agent{
+                        label "master"
+                    }
+                    steps{
+                        echo "testing on master"
+                    }
+                }
+                stage("test on slave 1"){
+                    agent{
+                        label "slave-1"
+                    }
+                    steps{
+                        echo "test on slave 1"
+                    }
+                }
             }
-        }
-    }
-    post{
-        always{
-            echo "====++++always++++===="
-        }
-        success{
-            echo "====++++only when successful++++===="
-        }
-        failure{
-            echo "====++++only when failed++++===="
         }
     }
 }
