@@ -1,32 +1,31 @@
 //Running the stages in parallely on multiple agents
 // using decalarative syntax with webhooks
 pipeline{
-    agent none
+    agent any
     stages{
         stage("build"){
-            agent{
-                label "slave-2"
-            }
             steps{
-                echo "Building"
+                echo "Building of test branch"
             }
         }
-        stage("testing parallel"){
+        stage("testing in parallel"){
             parallel{
-                stage("test on linux1"){
+                stage("test on linux1 node"){
                     agent{
                         label "master"
                     }
                     steps{
                         echo "testing on master node"
+                        echo "testing the test branch"
                     }
                 }
-                stage("test on slave 1"){
+                stage("test on slave 1 node"){
                     agent{
                         label "slave-1"
                     }
                     steps{
                         echo "test on slave 1 node"
+                        echo "testing on test branch"
                     }
                 }
             }
