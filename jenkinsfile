@@ -18,7 +18,7 @@ pipeline{
                         label "master"
                     }
                     steps{
-                        echo "testing on master node"
+                        echo "testing on feature branch with master agent"
                     }
                 }
                 stage("test on slave 1"){
@@ -26,7 +26,7 @@ pipeline{
                         label "slave-1"
                     }
                     steps{
-                        echo "test on slave 1 node"
+                        echo "test on feature branch with slave-1"
                     }
                 }
             }
